@@ -220,7 +220,11 @@ public  class SwappingHolder extends MultiSelectorBindingHolder implements Selec
      * @return True if the view is activated.
      */
     public boolean isActivated() {
-        return itemView.isActivated();
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB) {
+            return itemView.isActivated();
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -230,7 +234,9 @@ public  class SwappingHolder extends MultiSelectorBindingHolder implements Selec
      * @param isActivated True to activate the view.
      */
     public void setActivated(boolean isActivated) {
-        itemView.setActivated(isActivated);
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB) {
+            itemView.setActivated(isActivated);
+        }
     }
 
     /**
@@ -268,7 +274,9 @@ public  class SwappingHolder extends MultiSelectorBindingHolder implements Selec
                 : mDefaultModeBackgroundDrawable;
         itemView.setBackgroundDrawable(backgroundDrawable);
         if (backgroundDrawable != null) {
-            backgroundDrawable.jumpToCurrentState();
+            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB) {
+                backgroundDrawable.jumpToCurrentState();
+            }
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -281,6 +289,4 @@ public  class SwappingHolder extends MultiSelectorBindingHolder implements Selec
             }
         }
     }
-
-
 }
