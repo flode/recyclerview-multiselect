@@ -1,7 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'maven'
 apply plugin: 'signing'
-apply plugin: 'com.github.dcendents.android-maven'
 
 version '0.1'
 group 'com.bignerdranch.android'
@@ -20,7 +19,7 @@ def ossrhPassword = hasProperty('ossrhPassword') ?
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23"
+    buildToolsVersion "23.0.1"
 
     defaultConfig {
         minSdkVersion 7
